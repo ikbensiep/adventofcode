@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  gap: 1em;
+  align-items: stretch;
+  height: 100%;
+  background: #efefef;
+}
+
+section {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1em;
+  background: white;
+}
+
+header h1 {
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: -.5px;
+}
+header h1 > * {
+    font-weight: inherit;
+    font-size: inherit;
+  }
+}
+
+#input-data {
+  scroll-behavior: smooth;
+}
+
+dd {
+  padding: 1em;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -.5px;
+  text-align: right;
+  min-height: 1.5em;
+}

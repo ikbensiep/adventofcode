@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <link rel='stylesheet' href='style.css'/>
+</head>
+<body>
+  <header>
+    <a href="../">Back</a>
+  </header>
+  <main>
+    <section>
+      <header>
+        <h1>Input <a href="https://adventofcode.com/2022/day/1" target="_blank">View problem</a></h1>
+      </header>
+      <pre id="input-data" style="flex: 1; overflow: auto;"></pre>
+    </section>
+    <section>
+      <header>
+        <h1>
+          <span>Solution</span> <button type='submit'n>solve</button>
+        </h1>
+      </header>
+      <pre id="solution" style="flex: 1; overflow: auto;"></pre>
+    </section>
+    <section>
+      <header>
+        <h1>Output</h1>
+      </header>
+      <div>
+        <dl>
+          <dt><strong>1</strong>. Max calories carried by 1 person</dt><dd></dd>
+          <dt><strong>2</strong>. Total calories carried by top 3 carriers</dt><dd></dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <script id="solution">
+    const button = document.querySelector('button');
+    const input = document.querySelector('#input-data');
+    const code = document.querySelector('script');
+    const solution = document.querySelector('#solution');
+    const output = document.querySelectorAll('dd');
+    const filePath = './day-1-input.txt';
+
+    const fetchData = async () => {
+      // download day 1 problem input
+      fetch(filePath)
+        .then( data => {
+            return data.text();
+          }
+        )
+        .then(text => {
+          
+          // Split into Array by newlines
+          const tempData = text.split('\n');
+          // this will insert an empty entry in the array
+          // after each carrier which I'll use to make 
+          // arrays with calories per carrier.
+          const newArray = [];
+          let tempArray = [];
+          
+          tempData.forEach(element => {
+            if(element !== '') {
+              // make sure we're using numbers and not strings
+              tempArray.push(parseInt(element));
+            } else {
+              newArray.push(tempArray);
+              tempArray = [];
+            }
+          });
+          
+          // reducer function
+          const add = (accumulator, a) => {
+            return accumulator + a;
+          }
+
+          // Sum the values of carried calories into one number
+          let totals = newArray.map((currentArray, index, arr) => {
+            const sum = currentArray.reduce(add, 0);
+            return sum;
+          });
+          
+          // Spread Array to list of arguments, 
+          // find highest number in this list
+          const maxCalories = Math.max(...totals);
+          // Answer 1
+
+
+          // Array.sort() doesn't work for us here so we need 
+          // to pass a little compare function. 
+          // After sorting by number, retain only the first 3 items
+          const topThree = totals.sort((a, b) => b-a).slice(0,3);
+          
+          // Sum the total carried calories into one number
+          const topThreeTotalColories = topThree.reduce(add, 0);
+          // Answer 2
+
+          // just for fun :)
+          output[0].textContent = 'thinking...';
+          let printed = 0;
+          let interval = setInterval(() => {
+            input.textContent += tempData[printed] + '\n';
+            input.scrollTop = input.scrollHeight;
+            if(printed < tempData.length -1) {
+              printed++;
+            } else {
+              clearInterval(interval);
+              // reveal Answer 1
+              setTimeout(() => {
+                output[0].textContent = maxCalories.toLocaleString();
+                output[1].textContent = 'thinking...';
+              }, 1000);
+              // reveal Answer 2
+              setTimeout(() => {
+                output[1].textContent = topThreeTotalColories.toLocaleString();
+              }, 2000);
+            }
+          }, 1)
+
+          
+      });
+    }
+    
+    button.addEventListener('click', () => {
+      solution.textContent = code.textContent, 2000;
+      
+      fetchData();
+      button.disabled = true;
+    });
+  </script>
+
+</body>
+</html>
