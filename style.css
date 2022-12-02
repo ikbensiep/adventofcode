@@ -28,7 +28,6 @@ header h1 {
 header h1 > * {
     font-weight: inherit;
     font-size: inherit;
-  }
 }
 
 #input-data {
@@ -42,4 +41,28 @@ dd {
   letter-spacing: -.5px;
   text-align: right;
   min-height: 1.5em;
+}
+
+ol, ul {
+  padding: 0 1em;
+}
+
+li {
+  counter-increment: problem;
+  display: flex;
+  justify-content: space-between;
+  line-height: 2em;
+}
+
+li a::before {
+  content: 'Day ' counter(problem) ': ';
+}
+
+li:empty::before {
+  content: 'Day ' counter(problem) ': (todo)';
+  color: #ccc;
+}
+
+li:not(:empty)::after {
+  content: '✅ done!'
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <link rel='stylesheet' href='style.css'/>
+  <title>Day 1: Pomodoro timer</title>
+</head>
+<body>
+  <form action='#'>
+    <fieldset class='timer' disabled='disabled'>
+      <span>
+        <input type='number' name='minutes' id='minutes' value='15' min='0' max='60' maxlength="2" placeholder='00'/>
+        :
+        <input type='number' name='seconds' id='seconds' value='00' min='-1' max='60' maxlength="2" placeholder='00'/>
+      </span>
+    </fieldset>
+    <fieldset class='settings'>
+      <button type='button'>start</button>
+      <label for='settings'>
+        <input type='checkbox' name='settings' id='settings' />
+        <span><img src='./FILES/FILES/STARTER/images/gear.svg'></span>
+        <span><img src='./FILES/FILES/STARTER/images/check.svg'></span>
+      </label>
+    </fieldset>
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>

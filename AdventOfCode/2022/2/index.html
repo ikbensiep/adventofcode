@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <link rel='stylesheet' href='../../../style.css'/>
+</head>
+<body>
+  <header>
+    <a href="../../../">Back</a>
+  </header>
+  <main>
+    <section>
+      <header>
+        <h1>Input <a href="https://adventofcode.com/2022/day/2" target="_blank">View problem</a></h1>
+      </header>
+      <pre id="input-data" style="flex: 1; overflow: auto;"></pre>
+    </section>
+    <section>
+      <header>
+        <h1>
+          <span>Solution</span> <button type='submit'n>solve</button>
+        </h1>
+      </header>
+      <pre id="solution" style="flex: 1; overflow: auto;"></pre>
+    </section>
+    <section>
+      <header>
+        <h1>Output</h1>
+      </header>
+      <div>
+        <dl>
+          <dt><strong>1</strong>. Total score if everything goes exactly according to the strategy guide</dt><dd></dd>
+          <dt><strong>2</strong>?</dt><dd></dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <script id="solution">
+    const button = document.querySelector('button');
+    const input = document.querySelector('#input-data');
+    const code = document.querySelector('script');
+    const solution = document.querySelector('#solution');
+    const output = document.querySelectorAll('dd');
+    const filePath = './input.txt';
+
+    const OPTIONS = {
+      'A': {name: 'rock', value: 1},
+      'B': {name: 'paper', value: 2},
+      'C': {name: 'scissors', value: 3},
+      'X': {name: 'rock', value: 1},
+      'Y': {name: 'paper', value: 2},
+      'Z': {name: 'scissors', value: 3}
+    }
+
+    const compareHands = (round) => {
+      const handA = OPTIONS[round[0]].name;
+      const handB = OPTIONS[round[1]].name;
+      
+      console.log({round, handA, handB});
+
+      if (handA === handB) { 
+        round.push( 'draw' );
+        return round;
+      }
+
+      if(  handA === 'rock' && handB === 'paper' 
+        || handA === 'paper' && handB === 'scissors'
+        || handA === 'scissors' && handB === 'rock') {
+          round.push( 'win' );
+      } else {
+        round.push( 'loss' );
+      }
+      return round;
+    }
+
+    const fetchData = async () => {
+      // download problem input
+      fetch(filePath)
+        .then( data => {
+            return data.text();
+          }
+        )
+        .then(text => {
+          
+          // Split into Array by newlines
+          const rounds = text.split('\n');
+          let points = 0;
+
+          const results = rounds.map( round => {
+            let result = compareHands(round.split(' '));
+
+            switch(result[2]) {
+              case 'draw':
+                points += 3;
+                break;
+              case 'win':
+                points += 6;
+                break;
+              case 'loss':
+                points += 0;
+                break;
+            }
+            points += OPTIONS[result[1]].value;
+            return result;
+          });
+          
+          console.log(results);
+
+          const wins = results.filter( result => {return result[2] === 'win'});
+          const draws = results.filter( result => {return result[2] === 'draw'});
+          const losses = results.filter( result => {return result[2] === 'loss'});
+
+          console.log({points, wins, draws, losses, rounds});
+          
+          output[0].textContent = 'thinking...';
+          
+          let printed = 0;
+          let interval = setInterval(() => {
+            input.textContent += rounds[printed] + '\n';
+            input.scrollTop = input.scrollHeight;
+            if(printed < rounds.length -1) {
+              printed++;
+            } else {
+              clearInterval(interval);
+              // reveal Answer 1
+              setTimeout(() => {
+                output[0].textContent = points;
+                output[1].textContent = 'thinking...';
+              }, 1000);
+              // reveal Answer 2
+              setTimeout(() => {
+                output[1].textContent = 'working on problem';
+              }, 2000);
+            }
+          }, 1)
+      });
+    }
+    
+    button.addEventListener('click', () => {
+      solution.textContent = code.textContent, 2000;
+      
+      fetchData();
+      button.disabled = true;
+    });
+  </script>
+
+</body>
+</html>

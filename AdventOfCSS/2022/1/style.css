@@ -1,0 +1,136 @@
+@font-face {
+  font-family: "Bebas Neue";
+  src: url('./FILES/FILES/STARTER/fonts/bebasneue-book-webfont.woff2');
+}
+::selection {
+  background: transparent
+}
+
+/* hide arrows / os UI */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* -webkit-appearance: none;
+  margin: 0; */
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --dark: #2B2A30;
+  --red: #9d0000;
+  --green: #00aa51;
+}
+
+html, body {
+  background: var(--dark);
+  margin: 0;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  user-select: none;
+}
+
+form {
+  --progress: 0%;
+  --progress-color: var(--red);
+  width: 32rem;
+  height: 32rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 16px 40px #0006, 0 -20px 30px #fff3;
+  position: relative;
+  margin: 0;
+  background-image: radial-gradient(var(--dark), black);
+}
+
+form:after {
+  content: '';
+  box-shadow: inset 0px 0px 0 10px var(--progress-color);
+  border-radius: inherit;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  mask-image: conic-gradient(transparent var(--progress), white 0%, #fff3 74%, transparent 75%);
+  mask-type: luminance;
+  rotate: 180deg;
+  pointer-events: none;
+  transition: all .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5ex;
+  padding: 0;
+  border: 0;
+}
+
+fieldset > span {
+  font-family: 'Bebas Neue', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 196px;
+  color: white;
+  text-shadow: 0 2px 4px #0006;
+  display: flex;
+}
+
+input[type=number] {
+  color: inherit;
+  font: inherit;
+  border: 2px dotted transparent;
+  background: transparent;
+  width: .85em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -6px;
+  padding: 0;
+}
+
+input[type=number]:focus {
+  outline: none;
+}
+
+fieldset:not([disabled]) input {
+  border-color: transparent transparent white;
+}
+
+button {
+  color: white;
+  border: none;
+  background: transparent;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 3em;
+  letter-spacing: calc(16px * .6);
+  text-transform: uppercase;
+  opacity: 1;
+  transition: opacity .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+button[disabled] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox'] ~ span { display:none}
+input[type='checkbox'] + span { display: initial;}
+input:checked ~ span { display: initial;}
+input:checked + span { display:none}
