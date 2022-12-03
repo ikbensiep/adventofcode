@@ -26,13 +26,13 @@ const handleSettingsToggle = (e) => {
 }
 
 const startTimer = () => {
-  running = true;
   minutes = parseInt(inputs[0].value);
   seconds = parseInt(inputs[1].value);
   remainingSeconds = (minutes * 60) + seconds;
   totalSeconds = (minutes * 60) + seconds;
   button.textContent = 'stop'
   form.style.setProperty('--progress-color', 'var(--red)');
+  form.className = '';
   if (!interval) {
     interval = setInterval(updateTimer, 1000);
   } else {
@@ -62,6 +62,7 @@ const endTimer = () => {
     form.style.setProperty('--progress', 0 + '%');
     setTimeout(() => alert('done!'), 500);
     form.style.setProperty('--progress-color', 'var(--green)');
+    form.className = 'complete';
     button.textContent = 'start';
   }
 }

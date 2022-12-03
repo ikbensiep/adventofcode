@@ -1,0 +1,269 @@
+:root {
+  --background-color: #EFF0F6;
+  --border-color: #d7d6fc;
+  --primary-purple: #6B00F5;
+  --pattens-blue: #e1f0fe;
+  --ghost-white: #f7f7ff;
+  --white-ice: #defef0;
+  --pink: rgba(233, 121, 178, .2);
+  font-family: Poppins;
+}
+
+:focus-visible,
+:active {
+  outline-offset: 4px;
+  transition: all .1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: inherit;
+  font-family: inherit;
+  outline-color: var(--primary-purple);
+  outline-offset: 0px;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fffa;
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+nav {
+  display: flex;
+  gap: 2em;
+}
+
+nav a {
+  border-radius: 3rem;
+  color: var(--primary-purple);
+  font-weight: bold;
+  padding: .5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+nav a.active {
+  background: var(--primary-purple);
+  color: white;
+}
+
+main {
+  background-color: white;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 6rem 1rem 1rem;
+  min-width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  overflow: auto;
+}
+
+section > p {
+  text-align: center;
+}
+
+article {
+  align-items: flex-start;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: flex-start;
+  margin: 2rem auto 3rem;
+  max-width: 30rem;
+  padding: 0 1rem 0 0;
+  position: relative;
+}
+
+article div {
+  flex-grow: 1;
+}
+
+article strong {
+  font-size: 120%;
+}
+
+article[data-items]::after {
+  background: black;
+  border-radius: 50%;
+  color: white;
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: .2ex;
+  top: 0.7rem;
+  left: 2.2em;
+}
+
+button {
+  border: 0;
+  border-radius: 3rem;
+  color: white;
+  background-color: var(--primary-purple);
+  font-weight: bold;
+  padding: .5rem 1rem;
+  transform: translateY(1rem);
+}
+
+button:active {
+  color: var(--primary-purple);
+  box-shadow: inset 0 0 0 2px currentColor;
+  background-color: white;
+}
+
+button.ordered {
+  background-color: black;
+}
+
+button:not(.ordered) span:last-child,
+button.ordered span:first-child {
+  display: none;
+}
+button:not(.ordered) span:first-child,
+button.ordered span:last-child {
+  display: initial;
+}
+
+button[disabled] {
+  pointer-events: none;
+  color: #fffa;
+}
+
+button img {
+  vertical-align: text-bottom;
+  margin-right: .5ex;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  text-align: right;
+  line-height: 4rem;
+  max-width: 30rem;
+  margin: 2rem auto 3rem;
+}
+
+dt {
+  font-weight: 500;
+}
+
+dd {
+  font-weight: 700;
+  font-size: 2.5rem;
+  vertical-align: baseline;
+  font-variant-numeric: tabular-nums;
+}
+
+.total + dd {
+  color: var(--primary-purple);
+}
+
+dd::before,
+output::before {
+  content: '$'
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1ex;
+}
+
+fieldset span,
+fieldset output {
+  font-weight: bold;
+  padding: .5rem;
+  transform: translateY(1rem);
+}
+
+fieldset output {
+  flex: 1;
+  text-align: right;
+  margin-right: -1.5rem;
+  font-size: 2.5rem;
+}
+
+figure {
+  flex: 0 1 172px;
+  padding: 0;
+  margin: 0;
+  width: 144px;
+}
+
+figure img {
+  width: 100%;
+  max-width: 174px;
+  transform: translate(-1ex, -1em)
+}
+
+h1 {
+  margin: 0;
+  font-weight: 700;
+}
+
+h2,h3 {
+  font-weight: 400;
+  margin: 0.5ex 0;
+}
+
+hr {
+  border-color: var(--border-color);
+  border-style: solid;
+  border-width: 2px 0 0 0;
+  max-width: 30rem;
+}
+
+hr:last-of-type {
+  border-width: 6px 0 0 0;
+}
+
+p {
+  margin: 0;
+}
+section#menu article:nth-child(2n) {background: var(--white-ice);}
+section#menu article:nth-child(4n+1) {background: var(--pattens-blue);}
+section#menu article:nth-child(3n) {background: var(--pink)}
+section#menu article:nth-child(6n-1){background: var(--ghost-white)}
+
+section#cart figure img {
+  max-width: 64px;
+}
+
+[data-items]::after {
+  content: attr(data-items);
+  padding: 1ex;
+}
+
+[data-items="0"]::after,
+[data-items=""]::after {
+  content: unset;
+}

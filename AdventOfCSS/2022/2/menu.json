@@ -1,0 +1,44 @@
+{ 
+  "plates": [
+    {
+      "name": "French Fries with Ketchup",
+      "price": 2.23,
+      "image": "./FILES/images/plate__french-fries.png"
+    },
+    {
+      "name": "Salmon and Vegetables",
+      "price": 5.12,
+      "image": "./FILES/images/plate__salmon-vegetables.png"
+    },
+    {
+      "name": "Spaghetti with Sauce",
+      "price": 7.82,
+      "image":"./FILES/images/plate__spaghetti-meat-sauce.png"
+    },
+    {
+      "name": "Ravioli with Cheese",
+      "price": 4.35,
+      "image": "./FILES/images/plate__ravioli.png"
+    },
+    {
+      "name": "Tortellini",
+      "price": 4.95,
+      "image": "./FILES/images/plate__tortellini.png"
+    },
+    { 
+      "name":"Bacon and Eggs",
+      "price": 3.69,
+      "image": "./FILES/images/plate__bacon-eggs.png"
+    },
+    { 
+      "name":"Caesar Salad with Chicken",
+      "price": 4.20,
+      "image":"./FILES/images/plate__chicken-salad.png"
+    },
+    { 
+      "name":"Fish Sticks and Fries",
+      "price": 6.14,
+      "image": "./FILES/images/plate__fish-sticks-fries.png"
+    }
+  ]
+}

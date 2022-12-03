@@ -1,0 +1,5 @@
+- [x] snappy horizontal scroll between 2 screens (menu, cart)
+- [x] create JSON file for menu each item includes: title, price, image
+- [ ] write JS to manage app state: menu or cart 
+- [ ] write JS to load menu, list menu items w/ all properties, button to add to cart
+- [ ] write styles according to spec

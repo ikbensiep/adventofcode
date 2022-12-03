@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <title>Day 2: eCommerce component</title>
+  <link rel='stylesheet' href='style.css'/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <header>
+    <h1>To Go Menu</h1>
+    <nav>
+      <a href="#menu" class="active">view menu</a>
+      <a href="#cart" class="" data-items="0">view cart</a>
+    </nav>
+  </header>
+  <main>
+    <section id="menu">
+    </section>
+    <section id="cart">
+      <p>Your cart is empty.</p>
+    </section>
+  </main>
+  <template id="menuitem">
+    <article>
+      <figure><img alt=""></figure>
+      <div>
+        <h2></h2>
+        <p><span>$</span><strong></strong></p>
+        <fieldset>
+          <button>
+            <span>Add to cart</span>
+            <span><img src="FILES/images/check.svg"> In cart</span>
+          </button>
+        </fieldset>
+      </div>
+    </article>
+  </template>
+
+  <template id="orderitem">
+    <article data-items="0">
+      <figure><img alt=""></figure>
+      <div>
+        <h3></h3>
+        <p><span>$</span><strong></strong></p>
+        <fieldset>
+          <button>&lsaquo;</button><span></span><button>&rsaquo;</button>
+          <output></output>
+        </fieldset>
+      </div>
+    </article>
+    <hr />
+  </template>
+  <template id="ordertotal">
+    <dl>
+      <dt class="subtotal"></dt>
+      <dd></dd>
+      <dt class="taxes"></dt>
+      <dd></dd>
+      <dt class="total"></dt>
+      <dd></dd>
+    </dl>
+  </template>
+  <script src="script.js"></script>
+</body>
+</html>
