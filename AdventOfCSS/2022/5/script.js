@@ -1,4 +1,4 @@
-const filePath = 'feed.xml';
+const filePath = 'https://feeds.simplecast.com/hq7M2S7s';
 const episodeListEl = document.querySelector('ul');
 
 const fetchFeed = () => {
