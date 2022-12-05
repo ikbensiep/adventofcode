@@ -19,6 +19,7 @@ body {
   background-color: var(--keyboard-color);
   border-radius: 2rem;
   padding: 2rem;
+  user-select: none;
 }
 
 h1>span {font-weight: normal;}
