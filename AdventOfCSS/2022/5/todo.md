@@ -1,4 +1,5 @@
-- write markup, styles
-- load rss feed (xml file)
-- find title + image in feed
-- list last ~7 episodes
+- [x] write markup, styles
+- [x] load rss feed (xml file)
+- [x] find title + image in feed
+- [x] list last ~7 episodes
+- [x] find all episodes
