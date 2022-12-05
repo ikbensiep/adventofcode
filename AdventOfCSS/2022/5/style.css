@@ -1,0 +1,97 @@
+:root {
+  --bg-color: #F3F3F3;
+  --title-color: #A7A7A7;
+  --text-color: #4E4E4E;
+  --text-completed: #C9CDD1;
+  --drop-shadow: 0px 5px 32px #453F3F;
+  margin: 0;
+  box-sizing: content-box;
+  user-select: none;
+}
+
+body {
+  font-family: 'Nunito Sans', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+}
+
+article {
+  display: flex;
+  margin: 2em auto;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1080px;
+}
+
+fieldset {
+  border: none;
+  background: white;
+  border-radius: 0 2rem 2rem 0;
+  padding: 0 2rem 1rem;
+  flex-grow: 1;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--drop-shadow);
+}
+
+fieldset legend {
+  color: var(--title-color);
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: -.5px;
+
+}
+
+figure {
+  background: black;
+  width: 400px;
+  height: 400px;
+  margin: 0;
+  box-shadow: var(--drop-shadow);
+  aspect-ratio: 1;
+}
+
+figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+ul {
+  flex: 0 0 12em;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+}
+
+ul:empty::after {
+  content: 'loading episodes...';
+
+}
+
+li {
+  list-style: none;
+  line-height: 2;
+}
+
+li label {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 1ex;
+}
+
+label span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 29em;
+  display: inline-block;
+  transition: color .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+input:checked + span {
+  color: var(--text-completed);
+  text-decoration: line-through;
+}

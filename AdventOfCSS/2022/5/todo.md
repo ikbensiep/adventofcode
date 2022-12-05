@@ -1,0 +1,4 @@
+- write markup, styles
+- load rss feed (xml file)
+- find title + image in feed
+- list last ~7 episodes
