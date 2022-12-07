@@ -3,6 +3,7 @@ const timer = document.querySelector('fieldset.timer');
 const inputs = timer.querySelectorAll('input');
 const button = document.querySelector('button');
 const settingsToggle = document.querySelector('input[type=checkbox]');
+const audio = document.querySelector('audio');
 
 let minutes = 0;
 let seconds = 0;
@@ -64,6 +65,7 @@ const endTimer = () => {
     form.style.setProperty('--progress-color', 'var(--green)');
     form.className = 'complete';
     button.textContent = 'start';
+    audio.play()
   }
 }
 
