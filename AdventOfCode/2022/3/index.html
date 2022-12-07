@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <title>Day 3: Rucksack Reorganization</title>
+  <link rel='stylesheet' href='../../../style.css'/>
+</head>
+<body>
+  <header>
+    <a href="../../../">Back</a>
+  </header>
+  <main>
+    <section>
+      <header>
+        <h1>Input <a href="https://adventofcode.com/2022/day/3" target="_blank">View problem</a></h1>
+      </header>
+      <pre id="input-data" style="flex: 1; overflow: auto; text-align: center;"></pre>
+    </section>
+    <section>
+      <header>
+        <h1>
+          <span>Solution</span> <button type='submit'n>solve</button>
+        </h1>
+      </header>
+      <pre id="solution" style="flex: 1; overflow: auto;"></pre>
+    </section>
+    <section>
+      <header>
+        <h1>Output</h1>
+      </header>
+      <div>
+        <dl>
+          <dt><strong>1</strong></dt><dd></dd>
+          <dt><strong>2</strong></dt><dd></dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <script id="solution">
+const button = document.querySelector('button');
+const input = document.querySelector('#input-data');
+const code = document.querySelector('script');
+const solution = document.querySelector('#solution');
+const output = document.querySelectorAll('dd');
+const filePath = './input.txt';
+let sacks = [];
+let compartments = [];
+let printed = 0;
+let interval = undefined;
+
+let value = 0;
+
+// OK, I could use this code I found online to map a-Z to values:
+// const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+// const alphabet = alpha.map((x) => String.fromCharCode(x));
+// console.log(alphabet);
+
+// orrr I could make a long string and use the letter index as value:
+const alpha = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+const rucksackCompartments = () => {
+
+  let length = sacks[printed].length;
+  let splitPoint = length / 2;
+
+  let items = [
+    sacks[printed].slice(0, splitPoint), 
+    sacks[printed].slice(splitPoint, length)
+  ];
+
+  compartments.push( items )
+
+  scoreRucksackItems(items);
+
+  input.textContent += `${items[0]} ${items[1]} \n`;
+  input.scrollTop = input.scrollHeight;
+
+  printed++;
+  if(printed == sacks.length) {
+    clearInterval(interval);
+    interval = undefined;
+  } 
+}
+
+const scoreRucksackItems = (rucksack) => {
+  
+  let match = false;
+  let a = rucksack[0];
+  let b = rucksack[1];
+  let dupeItem;
+
+  let score = [...a].map( letter => {
+
+    if ([...b].indexOf(letter)) {
+      dupeItem = [...b].indexOf(letter);
+    }
+
+    return alpha.indexOf(b[dupeItem]);
+  });
+
+  console.log(score)
+
+}
+
+const fetchData = async () => {
+  // download problem input
+  fetch(filePath)
+  .then( data => {
+      return data.text();
+    }
+  )
+  .then(text => {
+    sacks = [...text.split('\n')]; 
+    
+    interval = setInterval(rucksackCompartments, 10);
+  })
+}
+
+fetchData();
+
+  </script>
+</body>
+</html>
