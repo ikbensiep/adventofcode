@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <link rel='stylesheet' href='style.css'/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕯</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <title>Day 6: Range slider</title>
+</head>
+<body>
+  <form action="#">
+    <fieldset>
+      <h1>
+        <span>$</span>
+        <output for="dollars">1</output>
+      </h1>
+        
+      <label for="dollars">
+        <input type="range" name="dollars" id="dollars" value="16" min="4.20" max="69" step=".05">
+      </label>
+      <button type="button">buy now</button>
+    </fieldset>
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>

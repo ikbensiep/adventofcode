@@ -1,0 +1,141 @@
+:root {
+  --dark-gray: #262529;
+  --medium-gray: #333139;
+  --light-gray: #4D4C53;
+  --gold: #FFC700;
+  --pink: #EA346F;
+  box-sizing: content-box;
+  font-family: 'Source Sans Pro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-gray);
+}
+
+button {
+  border: 0;
+  background-color: var(--medium-gray);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.3ex;
+  font-size: 23px;
+  border-radius: 60px;
+  padding: 1ex 6ex;
+  font-weight: 700;
+  height: 100px;
+}
+
+
+form {
+  background-color: var(--dark-gray);
+  display: flex;
+  flex-direction: row;
+  flex-basis: 50vw;
+}
+
+fieldset {
+  border: 0;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  flex: 1 1 20rem;
+  padding: 1rem 2rem 3rem;
+}
+
+h1 {
+  color: var(--gold);
+  font-size: 96px;
+  display: flex;
+  margin: 1ex 0 0;
+}
+
+h1 span {
+  vertical-align: text-top;
+  font-size: 50%;
+  line-height: 1.75;
+}
+
+input {
+  background-color: var(--light-gray);
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  /*! width: 10rem; */
+  --progress: 0%;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: var(--pink);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transform: translateY(calc(-50% + 5px));
+  transition: all .1s;
+}
+
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  border: 0;
+  background-color: var(--pink);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: calc(-.5rem + 2px);
+  transition: all .1s;
+}
+
+input[type=range]:focus {
+  /*! outline: none; */ /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 10px #EA346F33;
+}
+
+input[type=range]:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 10px #EA346F33;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background-color: var(--light-gray);
+  height: 10px;
+  border-radius: 15px;
+  position: relative;
+  background-image: linear-gradient(to right, var(--pink), var(--pink));
+  background-size: var(--progress) 100%;
+  background-repeat: no-repeat;
+  transition: all .1s;
+}
+
+input[type=range]::-moz-range-track {
+  background-color: var(--light-gray);
+  height: 10px;
+  border-radius: 15px;
+  position: relative;
+  background-image: linear-gradient(to right, var(--pink), var(--pink));
+  background-size: var(--progress) 100%;
+  background-repeat: no-repeat;
+  transition: all .1s;
+}
+
+input[type=range]:focus::-moz-range-track{
+  box-shadow: 0 0 .75ex .1ex #EA346F66;
+}
+
+label { width: 100%; }
