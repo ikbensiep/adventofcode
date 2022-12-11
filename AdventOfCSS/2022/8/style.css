@@ -1,0 +1,241 @@
+/* 
+C omposition - skeletal, flexible layouts - determine interaction between comp elements
+U tility - single (or small coherent group of) property/ies [design tokens]
+B lock - skeletal components for organizaional structure - aka common UI elements
+E xception
+
+(https://cube.fyi)
+
+For selectors, use html elements over class names, ie avoid this: 
+
+.my-block .image {
+}
+
+.my-block .content {
+}
+
+and instead prefer element selectors like this: 
+
+.my-block img {
+}
+
+.my-block article {
+}
+
+*/ 
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Oswald', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  gap: 2ex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  
+  justify-content: space-evenly;
+  gap: 2rem;
+  /*! flex-wrap: wrap; */
+  padding: 0 6rem;
+flex-wrap: wrap;/* overflow-y: auto; *//* width: 100vw; */align-content: flex-end;}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+article section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-grow: 0;
+}
+
+article > section {
+  border-radius: 3em;
+  box-shadow: 0 0 1ex var(--bg-color);
+}
+
+section > figure {
+  margin: auto;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  width: calc(100% + 4rem);
+}
+
+figure > img {
+  width: 12rem;
+  margin: 0 auto;
+  display: block;
+  aspect-ratio: 1 / 1;
+transform: scale(1.5);}
+
+/* Utilities */
+
+article section {
+  background-color: var(--bg-color);
+  color: var(--content-text);
+  padding: 1rem;
+}
+
+article > h1 {
+  font-family: 'Krona One';
+  color: var(--title-text);
+min-width: 5rem;}
+article > h1 strong {
+  font-size: 2em;
+}
+
+article h2 {
+  font-size: 72px;
+  font-weight: 200;
+  letter-spacing: -.05ex;
+  margin: 0 0 2rem;
+}
+
+
+article time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+article h2 {
+  color: var(--temp-text);
+}
+article h2 span {
+  font-size: .75em;
+  vertical-align: super;
+}
+
+article dl {
+  display: grid;
+  gap: .8ex;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  color: var(--content-text);
+  margin: 0;
+}
+
+dd {
+  margin: 0;
+  text-align: end;
+}
+
+svg > * {
+  fill: var(--content-text);
+}
+
+/* Blocks */
+fieldset {
+  padding: 1rem 0;
+  border: none;
+  display: flex; 
+  flex-direction: row;
+  gap: 1rem;
+justify-content: center;align-items: baseline;}
+
+select, input[type=text] {
+  -moz-appearance: none;
+  font-family: 'Oswald';
+  font-size: 2em;
+  color: var(--title-text);
+  background-color: var(--bg-color);
+  border: none;
+  padding: 0 1ex;
+  border-radius: 1ex;
+  line-height: 1.8;
+  outline-offset: 2px;
+  outline-width: 4px;
+  outline-color: var(--title-text);
+  -webkit-appearance: none;
+  word-spacing: 1rem;
+flex: 0 1 auto;max-width: 8em;}
+
+#day-forecast {
+  padding: 0 6rem;
+  color: #247490;
+}
+
+#day-forecast > div {
+  display: flex;
+  height: calc(100px + 2rem);
+  gap: .5ex;
+  padding: 1rem;
+  background-color: #D3EBF4;
+
+  position: relative;
+  border-radius: 1.5rem;
+}
+
+.bar {
+  display: flex;
+  flex: 1;
+  background-color: #247490;
+  background-image: linear-gradient(to bottom, #247490 var(--value, 0px), #4DB0D3 var(--value, 0px));
+  color: #D3EBF4;
+  border-radius: 1ex;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+  /*! flex-direction: column; */
+}
+
+.bar::after {
+  content: attr(data-hour)':00';
+  position: absolute;
+  top: 2.5ex;
+  font-weight: 200;
+  letter-spacing: -0.1ex;
+  font-size: 0.8em;
+}
+
+.bar strong {
+  letter-spacing: -.1ex;
+}
+.bar span {
+  font-weight: 200;
+}
+
+/* Exceptions */ 
+
+@media (orientation:portrait) { 
+    main {
+        flex-direction: column;
+    }
+    
+    article {
+        flex-direction: row;gap: 2rem;
+    padding: 0 1rem;}
+    
+    article > section {
+        flex-direction: row;
+        flex: 1 0 28rem;
+    }
+
+    section#day-forecast {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    padding: 0;/* display: none; */}
+}

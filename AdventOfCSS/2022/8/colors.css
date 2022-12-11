@@ -1,0 +1,41 @@
+:root {
+  --bg-color: #E9F5FA;
+  --title-text: #4DB0D3;
+}
+
+[data-wmo="cloudy"] section {
+  --bg-color: #4DB0D3;
+  --temp-text: #E6DF95;
+  --content-text: #D3EBF4;
+}
+
+[data-wmo="sunny"] section {
+  --bg-color: #E6DF95;
+  --temp-text: #4DB0D3;
+  --content-text: #247490;
+}
+
+[data-wmo="stormy"] section,
+[data-wmo="thunder"] section {
+  --bg-color: #0E2E3A;
+  --temp-text: #E6DF95;
+  --content-text: #D3EBF4;
+}
+
+[data-wmo="snowy"] section {
+  --bg-color: #BCE1EF;
+  --temp-text: #0E2E3A;
+  --content-text: #247490;
+}
+
+[data-wmo="rainy"] section {
+  --bg-color: #4DB0D3;
+  --temp-text: #E6DF95;
+  --content-text: #D3EBF4
+}
+
+[data-wmo="partly-cloudy"] section {
+  --bg-color: #2B8BAD;
+  --temp-text: #E6DF95;
+  --content-text: #D3EBF4;
+}
