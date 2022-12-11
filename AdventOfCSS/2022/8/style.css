@@ -221,21 +221,51 @@ flex: 0 1 auto;max-width: 8em;}
 @media (orientation:portrait) { 
     main {
         flex-direction: column;
+        padding: 0;
+        align-content: stretch;
+        padding-bottom: calc(100px + 2rem);
     }
     
     article {
-        flex-direction: row;gap: 2rem;
-    padding: 0 1rem;}
+      flex-direction: row;
+      gap: 1rem;
+      padding: 0 1rem;
+    }
     
     article > section {
         flex-direction: row;
-        flex: 1 0 28rem;
+        flex: 1;
     }
 
-    section#day-forecast {
+    figure {
+      margin-left: -2rem;
+      margin-right: 0;
+    }
+
+    figure > img {
+      
+    }
+
+    #day-forecast {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-    padding: 0;/* display: none; */}
+        padding: 0 6rem;
+        color: #247490;
+      }
+      
+      #day-forecast > div {
+        display: flex;
+        height: calc(100px + 0rem);
+        gap: .5ex;
+        padding: 1rem;
+        background-color: #D3EBF4;
+        position: absolute;
+        bottom: 0;
+        overflow-x: auto;
+        width: 100%;
+        left: 0;
+        right: 0;
+      }
 }
