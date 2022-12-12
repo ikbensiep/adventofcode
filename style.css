@@ -54,12 +54,14 @@ li {
   line-height: 2em;
 }
 
-li a::before {
+li a { flex: 1}
+
+li::before {
   content: 'Day ' counter(problem) ': ';
 }
 
 li:empty::before {
-  content: 'Day ' counter(problem) ': (todo)';
+  content: 'Day ' counter(problem) ': (todo) ' attr(data-todo);
   color: #ccc;
 }
 
